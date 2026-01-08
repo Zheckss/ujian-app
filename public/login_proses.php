@@ -15,7 +15,7 @@ if ($_POST) {
         header("Location: dashboard.php");
         exit;
     } else {
-        header("Location: index.php?error=1");
+        header("Location: login.php?error=Username atau Password Salah!");
         exit;
     }
 }

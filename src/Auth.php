@@ -32,9 +32,13 @@ class Auth {
     }
 
     public static function checkLogin() {
-        if (session_status() == PHP_SESSION_NONE) session_start();
-        if (!isset($_SESSION['is_logged_in'])) {
-            header("Location: index.php");
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        if (!isset($_SESSION['user_id'])) {
+            // PERBAIKAN: Arahkan ke login.php, jangan ke index.php
+            header("Location: ../public/login.php"); 
             exit;
         }
     }

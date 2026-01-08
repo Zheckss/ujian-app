@@ -95,14 +95,15 @@ $riwayat = $dash->getRiwayatNilai($_SESSION['user_id']);
         <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
 
         <div class="menu-container">
+            
             <?php if ($_SESSION['role'] == 'admin'): ?>
                 <a href="admin_soal.php" class="btn btn-soal">🔧 Kelola Soal</a>
                 <a href="admin_siswa.php" class="btn btn-siswa">👥 Kelola Siswa</a>
-            <?php endif; ?>
+                <a href="admin_hasil.php" class="btn" style="background: linear-gradient(to right, #c0392b, #e74c3c);">🛡️ Reset Ujian</a> <?php endif; ?>
 
             <a href="profil.php" class="btn btn-profil">👤 Profil Saya</a>
             <a href="kerjakan.php" class="btn btn-ujian">📝 Mulai Ujian</a>
-            <a href="logout.php" class="btn btn-logout">Logout</a>
+            <a href="pembahasan.php" class="btn" style="background: linear-gradient(to right, #16a085, #1abc9c);">📚 Lihat Pembahasan</a> <a href="logout.php" class="btn btn-logout">Logout</a>
         </div>
 
         <h3>📊 Riwayat Nilai Anda</h3>

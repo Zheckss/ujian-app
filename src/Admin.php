@@ -127,5 +127,24 @@ class Admin {
         $stmt = $this->db->prepare("DELETE FROM users WHERE id_user = :id");
         return $stmt->execute([':id' => $id]);
     }
+    // --- TAMBAHAN BARU: MONITOR HASIL & RESET ---
+    
+    // 1. Ambil Semua Hasil Ujian (Lengkap dengan Nama)
+    public function getAllHasilUjian() {
+        $query = "SELECT n.id_nilai, n.skor, n.jumlah_benar, n.tanggal_ujian, u.nama_lengkap, u.username 
+                  FROM nilai n 
+                  JOIN users u ON n.id_user = u.id_user 
+                  ORDER BY n.tanggal_ujian DESC";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    // 2. Reset/Hapus Nilai Tertentu
+    public function resetNilai($id_nilai) {
+        $query = "DELETE FROM nilai WHERE id_nilai = :id";
+        $stmt = $this->db->prepare($query);
+        return $stmt->execute([':id' => $id_nilai]);
+    }
 } 
 ?>
